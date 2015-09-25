@@ -158,9 +158,9 @@
                     if (window.location.hash == "#inner") {
                         config.$bookBlock.bookblock('next');
                     }
-                    else if (window.location.hash == "" && location.host != "") {
-                        document.body.innerHTML = "";
-                        console.warn("no hash");
+                    else if (window.location.hash == "") {
+                        $('#person').text("");
+                        $('body').addClass('noname');
                     }
                     else if (window.location.hash.trim().length) {
                         var secretData = window.location.hash.substr(1);
