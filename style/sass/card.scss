@@ -11,7 +11,7 @@
   height: $pageHeight;
   position: absolute;
   background: #fff;
-  cursor: default!important;
+  cursor: default !important;
 }
 
 .a-upper-page {
@@ -41,7 +41,7 @@
   background-position: center center;
   background-size: 40%;
   background-repeat: no-repeat;
-  top: $pageHeight / 2;
+  top: $pageHeight / 2 + 3px;
   background-color: transparent;
   pointer-events: none;
 }
@@ -100,4 +100,26 @@ a.a-inactive {
 
 a.a-inner {
   background-color: $strongColor !important;
+}
+
+.show-body {
+  visibility: visible !important;
+  @include opacity(0);
+}
+
+.show-body-2 {
+  @include transition-property(opacity);
+  @include transition-duration(800ms);
+  @include opacity(1);
+}
+
+.a-shadow {
+  box-shadow: 0 12px 20px -10px rgba(81, 64, 49, 0.6);
+  @extend .a-lower-page;
+  pointer-events: none;
+  z-index: 0;
+}
+
+body{
+  @include user-select(none);
 }

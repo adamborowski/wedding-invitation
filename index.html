@@ -3,17 +3,16 @@
 <head>
     <meta charset="UTF-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BookBlock: A Content Flip Plugin - Demo 1</title>
-    <meta name="description" content="Bookblock: A Content Flip Plugin - Demo 1"/>
-    <meta name="keywords" content="javascript, jquery, plugin, css3, flip, page, 3d, booklet, book, perspective"/>
-    <meta name="author" content="Codrops"/>
-    <link rel="shortcut icon" href="../favicon.ico">
+    <title>Ślub Kasi i Adama</title>
+    <meta name="description" content="Zaproszenie na ślub Kasi i Adama"/>
+    <meta name="keywords"
+          content="javascript, jquery, plugin, css3, flip, page, 3d, booklet, book, perspective, wedding, invitation"/>
+    <meta name="viewport" content="initial-scale=0.6, maximum-scale=1.0 user-scalable=yes">
     <link rel="stylesheet" type="text/css" href="style/stylesheets/main.css"/>
     <script src="js/modernizr.custom.js"></script>
     <script src="js/aes.js"></script>
 </head>
-<body>
+<body style="visibility: hidden;">
 <div class="container">
 
 
@@ -21,6 +20,7 @@
         <div class="bb-custom-wrapper">
             <!--<h3>Illustrations by <a href="http://dribbble.com/kevinhowdeshell">Kevin Howdeshell</a></h3>-->
             <div id="bb-bookblock" class="bb-bookblock">
+                <div class="a-shadow" ignore="1"></div>
                 <div class="bb-item">
                     <div class="a-blank-page a-upper-page"></div>
                     <div id="ourPhoto" class="a-lower-page"></div>
@@ -79,6 +79,7 @@
             prev.toggleClass('a-inner', index == 0);
             next.toggleClass('a-inner', index == 0);
             currentIndex = index;
+            return false;
         }
 
         var config = {
@@ -126,8 +127,7 @@
                         },
                         'click touchstart': function (event) {
                             var index = config.$bookBlock.find('[style*="block"]').index();
-                            var nextIndex = index == 1 ? 0 : 1;
-                            config.$bookBlock.bookblock('jump', nextIndex + 1);
+                            config.$bookBlock.bookblock(index == 1 ? 'next' : 'prev');
 
                         }
                     });
@@ -183,6 +183,15 @@
 </script>
 <script>
     Page.init();
+    $(window).load(function () {
+        $('body').addClass('show-body');
+        setTimeout(function () {
+            $('body').addClass('show-body-2');
+        }, 300);
+        $('body').on('contextmenu', function (e) {
+            e.preventDefault();
+        })
+    })
 </script>
 </body>
 </html>
