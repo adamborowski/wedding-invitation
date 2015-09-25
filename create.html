@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js demo-1">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BookBlock: A Content Flip Plugin - Demo 1</title>
+    <meta name="description" content="Bookblock: A Content Flip Plugin - Demo 1"/>
+    <meta name="keywords" content="javascript, jquery, plugin, css3, flip, page, 3d, booklet, book, perspective"/>
+    <meta name="author" content="Codrops"/>
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" type="text/css" href="style/stylesheets/main.css"/>
+    <script src="js/modernizr.custom.js"></script>
+    <script src="js/aes.js"></script>
+</head>
+<body>
+<div class="container">
+
+
+    <div class="main clearfix">
+        <div class="bb-custom-wrapper">
+            <!--<h3>Illustrations by <a href="http://dribbble.com/kevinhowdeshell">Kevin Howdeshell</a></h3>-->
+            <div id="bb-bookblock" class="bb-bookblock">
+                <div class="bb-item">
+                    <div class="a-upper-page"></div>
+                    <div class="a-lower-page" id="a-inner-page">
+                        <p>Z ogromną radością zapraszamy</p>
+
+                        <p id="person" contenteditable="true">Wpisz i wciśnij CTRL+C</p>
+
+                        <p>Na uroczystość naszych zaślubin, które odbędą się</p>
+
+                        <p>21 listopada 2015 r. o godz. 13:00</p>
+
+                        <p>w kościele <strong>*</strong> pw. Matki Bożej Nieustającej Pomocy i św. Piotra Rybaka</p>
+
+                        <p>przy ul. Portowej 2 w Gdyni.</p>
+
+                        <p>Katarzyna Szefler i Adam Borowski</p>
+
+                        <p>wraz z rodzicami</p>
+
+                        <p><strong>*</strong> Będziemy przeszczęśliwi, gdy uczestnicząc z nami w Eucharystii,<br/>
+                            przyjmiecie Komunię Świętą w naszej intencji.</p>
+
+                    </div>
+                    <div id="a-middle-graphic"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /container -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="js/jquerypp.custom.js"></script>
+<script src="js/jquery.bookblock.js"></script>
+<script>
+    var Page = (function () {
+
+        var currentIndex = null;
+
+
+        var config = {
+                    $bookBlock: $('#bb-bookblock'),
+                    $navNext: $('#bb-nav-next'),
+                    $navPrev: $('#bb-nav-prev'),
+                    $navFirst: $('#bb-nav-first'),
+                    $navLast: $('#bb-nav-last')
+                },
+                init = function () {
+                    config.$bookBlock.bookblock({
+                        speed: 800,
+                        shadowSides: 0.8,
+                        shadowFlip: 0.7,
+                        orientation: 'horizontal',
+                    });
+                };
+
+
+        return {init: init};
+
+    })();
+</script>
+<script>
+    Page.init();
+
+    $('#person').on('keydown', function (e) {
+        if (e.keyCode == 13) {
+            e.preventDefault();
+        }
+    })
+    $('#person').on('copy', function (e) {
+        var text = CryptoJS.AES.encrypt(this.innerText, "YOU ARE HACKER").toString();
+        var href = location.href;
+        var exec = /(http:\/\/)?(.*)\/create.html/g.exec(href);
+        var baseUrl = exec[2];
+        var isRemote = exec[1] != null;
+        var url = baseUrl + (isRemote ? "/#" : "/index.html#") + text;
+        e.originalEvent.clipboardData.setData('text/plain', url);
+        console.log("this.innerText", url);
+        e.preventDefault();
+        this.innerText="Skopiowano URL do schowka";
+    })
+    $('#person').focus();
+    document.execCommand('selectAll',false,null)
+</script>
+</body>
+</html>

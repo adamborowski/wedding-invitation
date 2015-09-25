@@ -1,0 +1,5 @@
+.idea
+style/.sass-cache
+style/stylesheets
+.DS_Store
+**~

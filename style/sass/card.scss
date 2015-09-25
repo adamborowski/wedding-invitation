@@ -1,0 +1,103 @@
+@import "compass/css3";
+@import "var";
+@import "font";
+
+.empty-page {
+  background: transparent;
+}
+
+.a-page {
+  width: $pageWidth;
+  height: $pageHeight;
+  position: absolute;
+  background: #fff;
+  cursor: default!important;
+}
+
+.a-upper-page {
+  @extend .a-page;
+}
+
+.a-lower-page {
+  @extend .a-page;
+  top: $pageHeight;
+
+}
+
+.a-blank-page {
+  background: $bgColor;
+  z-index: 100000;
+}
+
+#ourPhoto {
+  background-image: url(../../images/front.png);
+  background-position: center center;
+  background-size: cover;
+}
+
+#a-middle-graphic {
+  @extend .a-page;
+  background-image: url(../../images/graphic.png);
+  background-position: center center;
+  background-size: 40%;
+  background-repeat: no-repeat;
+  top: $pageHeight / 2;
+  background-color: transparent;
+  pointer-events: none;
+}
+
+#a-inner-page {
+  padding-top: 50px;
+  font-family: Oranienbaum, serif;
+  font-size: 16px;
+  p {
+    margin: 7px 0;
+    color: #4F4C4C;
+    &:nth-child(2) {
+      color: $strongColor;
+      font-size: 1.4em;
+      margin: 17px 0;
+    }
+    &:nth-child(4) {
+      font-size: 1.58em;
+      margin: 3px 0;
+    }
+    &:nth-child(6) {
+      font-size: 1.4em;
+    }
+    &:nth-child(7) {
+      text-align: right;
+      margin-top: 30px;
+      margin-right: 1.3em;
+    }
+    &:nth-child(8) {
+      text-align: right;
+      margin-right: 1.3em;
+    }
+    &:nth-child(9) {
+      font-size: 0.9em;
+      margin-top: 16px;
+      margin-right: 1.3em;
+      color: $strongColor;
+    }
+    strong {
+      font-size: 1.4em;
+      line-height: 0em;
+      font-weight: normal;
+      color: $strongColor;
+    }
+  }
+
+}
+
+a.a-inactive {
+  pointer-events: none;
+}
+
+#bb-nav-prev, #bb-nav-next {
+  @include transition(background-color, 900ms);
+}
+
+a.a-inner {
+  background-color: $strongColor !important;
+}

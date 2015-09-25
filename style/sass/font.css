@@ -1,0 +1,18 @@
+@font-face {
+	font-family: 'Oranienbaum';
+	font-style: normal;
+	font-weight: normal;
+	src:
+		local('Oranienbaum'),
+		local('Oranienbaum-Regular'),
+		/* from http://fonts.gstatic.com/s/oranienbaum/v5/WyaFSM_en0pjtlmUWwS7GeZiE7IA0Up7-VwGqa0iGVY.eot */
+		url('Oranienbaum.eot?#iefix') format('embedded-opentype'),
+		/* from http://fonts.gstatic.com/s/oranienbaum/v5/WyaFSM_en0pjtlmUWwS7GdIh4imgI8P11RFo6YPCPC0.woff */
+		url('Oranienbaum.woff') format('woff'),
+		/* from http://fonts.gstatic.com/s/oranienbaum/v5/WyaFSM_en0pjtlmUWwS7Gag5eI2G47JWe0-AuFtD150.woff2 */
+		url('Oranienbaum.woff2') format('woff2'),
+		/* from http://fonts.gstatic.com/l/font?kit=WyaFSM_en0pjtlmUWwS7GZS_ZaL0arjVp2tkn2-HJhM&skey=2b188dc93b25e0f1#Oranienbaum */
+		url('Oranienbaum.svg#Oranienbaum') format('svg'),
+		/* from http://fonts.gstatic.com/s/oranienbaum/v5/WyaFSM_en0pjtlmUWwS7GV02b4v3fUxqf9CZJ1qUoIA.ttf */
+		url('Oranienbaum.ttf') format('truetype');
+}
