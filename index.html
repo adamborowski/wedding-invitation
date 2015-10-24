@@ -28,11 +28,11 @@
                 <div class="bb-item">
                     <div class="a-upper-page"></div>
                     <div class="a-lower-page" id="a-inner-page">
-                        <p>Z ogromną radością zapraszamy</p>
+                        <p id="fix1">Z ogromną radością zapraszamy</p>
 
                         <p id="person">&nbsp;</p>
 
-                        <p>na uroczystość naszych zaślubin, które odbędą się</p>
+                        <p id="fix2">na uroczystość naszych zaślubin, które odbędą się</p>
 
                         <p>21 listopada 2015 r. o godz. 13:00</p>
 
@@ -42,7 +42,7 @@
 
                         <p>Katarzyna Szefler i Adam Borowski</p>
 
-                        <p>wraz z rodzicami</p>
+                        <p id="fix3">wraz z rodzicami</p>
 
                         <p><strong>*</strong> Będziemy przeszczęśliwi, gdy uczestnicząc z nami w Eucharystii,<br/>
                             przyjmiecie Komunię Świętą w naszej intencji.</p>
@@ -166,8 +166,26 @@
                         var secretData = window.location.hash.substr(1);
 //                        var encrypted = CryptoJS.AES.encrypt("Sz. P. Aleksandrę Kucharską", "YOU ARE HACKER").toString();
                         var decrypted = CryptoJS.AES.decrypt(secretData, "YOU ARE HACKER").toString(CryptoJS.enc.Utf8);
-                        if (decrypted != "") {
-                            $('#person').text(decrypted);
+                        var tyldaPosition = decrypted.lastIndexOf('~');
+                        var content, version;
+                        if (tyldaPosition == -1) {
+                            content = decrypted;
+                            version = 1;
+                        }
+                        else {
+                            content = decrypted.substring(0, tyldaPosition);
+                            version = decrypted.substr(tyldaPosition + 1, 1);
+                        }
+
+                        if (version == 2) {
+                            $('#ourPhoto').addClass('zawiadomienie');
+                            $('#fix1').html('Z ogromną radością zawiadamiamy');
+                            $('#fix2').html('o uroczystości naszych zaślubin, które odbędą się');
+                            $('#fix3').html("&nbsp;");
+                        }
+                        console.info("Decoded data as version " + version);
+                        if (content != "") {
+                            $('#person').text(content);
                         }
                         else {
                             $('#person').text("");
